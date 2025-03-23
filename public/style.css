@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#loader {
+    position: absolute;
+    display: none;
+    background-color: #bfdbff;
+    border: 0.5px solid black;
+    padding: 1.2px;
+    border-radius: 2px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+#container {
+    text-align: center;
+}
+
+#title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#form>#input {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    font-size: 25px;
+    outline: none;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.user_div {
+    width: 200px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#h2_login {
+    overflow: auto;
+}
+
+.user_div>img {
+    width: 80px;
+    border-radius: 50%;
+    border: 2px solid;
+}
+
+#requests_div {
+    position: absolute;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(-1000vw);
+    transition: all 0.5s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+    #requests_div {
+        font-size: 12px;
+    }
+
+}

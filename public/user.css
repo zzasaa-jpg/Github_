@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#back_btn {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#loader {
+    position: absolute;
+    display: none;
+    background-color: #bfdbff;
+    border: 0.5px solid black;
+    padding: 1.2px;
+    border-radius: 2px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    line-height: 1.5;
+    padding: 10px;
+}
+
+#user_img>img {
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+    #user_img>img {
+        width: 150px;
+        height: 150px;
+    }
+}
