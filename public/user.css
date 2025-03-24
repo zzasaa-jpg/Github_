@@ -37,6 +37,7 @@ body {
     gap: 10px;
     line-height: 1.5;
     padding: 10px;
+    overflow-wrap: anywhere;
 }
 
 #user_img>img {
@@ -48,5 +49,12 @@ body {
     #user_img>img {
         width: 150px;
         height: 150px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #user_section {
+        justify-content: normal;
+        height: 100vh;
     }
 }
