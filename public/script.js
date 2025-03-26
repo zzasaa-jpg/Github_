@@ -53,12 +53,12 @@ async function requests() {
     }
 
 }
-requests();
 
 let requests_info = false;
 window.addEventListener("dblclick", function () {
     requests_info = !requests_info
     if (requests_info) {
+        requests();
         requests_div.style.transform = "translateY(0px)";
         document.getElementById("results").style.display = "none";
 
