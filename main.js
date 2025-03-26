@@ -4,6 +4,8 @@ const path = require('path');
 const cors = require('cors');
 const axios = require('axios');
 const port = process.env.port || 7547;
+const mongoose = require('./Value');
+const { Schema } = require('mongoose');
 
 const app = express();
 app.use(express.json());
@@ -85,6 +87,60 @@ app.get('/user/cache/take', (req, res) => {
         res.status(500).json({ message: "Internal error" });
     }
 });
+
+//----------------------------------------------------------------
+
+const shema = new mongoose.Schema({
+    value: String,
+    value_ : Number,
+    cache: Boolean,
+});
+
+const Value = mongoose.model("search", shema);
+
+let v_c = 0;
+
+app.post('/api/value', (req, res) => {
+    const { value, cache} = req.body;
+    try {
+        const newvalue = new Value({
+            value: value,
+            value_: v_c++,
+            cache: cache,
+        });
+        newvalue.save();
+        res.status(201).json({message: "successful saved data", value: newvalue});
+    } catch (error) {
+        res.status(500).json({message: "Internal error"});
+    }
+});
+
+
+const shema1 = new mongoose.Schema({
+    value: String,
+    value_ : Number,
+    cache: Boolean,
+});
+
+const Value1 = mongoose.model("user___", shema1);
+
+let v_c1 = 0;
+
+app.post('/api/value1', (req, res) => {
+    const { value1, cache1} = req.body;
+    try {
+        const newvalue1 = new Value1({
+            value: value1,
+            value_: v_c1++,
+            cache: cache1,
+        });
+        newvalue1.save();
+        res.status(201).json({message: "successful saved data from user", value: newvalue1});
+    } catch (error) {
+        res.status(500).json({message: "Internal error user"});
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`app running on ${port}`)

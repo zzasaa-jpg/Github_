@@ -29,6 +29,9 @@ async function user_info_(user) {
     user_section.style.display = "none";
     loader.style.display = "flex";
     try {
+
+      c(user, false);
+        //--------------------------------------------------------------
         const reponse = await fetch(`/user/of/git/${user}`);
         const data = await reponse.json();
         send_backend(user, data);// calling for cache data store in Backend.
@@ -94,6 +97,7 @@ async function check_cache(user) {
             if (results.obj.user === user) {
                 console.log("_");
                 render_user_info(results.obj.obj_)
+                c(user, true);
                 return true;
             }
         }
@@ -101,4 +105,13 @@ async function check_cache(user) {
         console.error(error)
     }
 
+}
+
+
+async function c(username, val) {
+    const value = await fetch('api/value1', {
+        method: 'POST', 
+        headers: {'Content-Type': "application/json"},
+        body: JSON.stringify({value1: username, cache1: val}),
+    });
 }

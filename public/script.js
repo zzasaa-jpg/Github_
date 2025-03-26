@@ -11,13 +11,17 @@ form.addEventListener("submit", async function (e) {
     e.preventDefault();
     let username = document.getElementById("input").value.trim();
     try {
+        //--------------------------------------------------------------
         if (obj?.username === username) {
             console.log("_");
-            rendring_users(obj.data.items)
+            c(username, true);
+            rendring_users(obj.data.items);
             return;
         }
-        const reponse = await fetch(`/api/git/users/${username}`);
-        const data = await reponse.json();
+       c(username, false);
+
+        const response = await fetch(`/api/git/users/${username}`);
+        const data = await response.json();
         obj = { username, data }
         if (data.total_count === 0) {
             container.style.display = "block";
@@ -92,4 +96,12 @@ function rendring_users(data) {
         document.getElementById("results").appendChild(users_div);
     })
 
+}
+
+async function c(username, val) {
+    const value = await fetch('api/value', {
+        method: 'POST', 
+        headers: {'Content-Type': "application/json"},
+        body: JSON.stringify({value: username, cache: val}),
+    });
 }
