@@ -33,7 +33,7 @@ async function user_info_(user) {
         const data = await reponse.json();
         send_backend(user, data);// calling for cache data store in Backend.
         if (data.login === undefined) {
-            document.getElementById('user_info').innerHTML = `<h2>User not exists on git || requests limit cross!</h2>`;
+            document.getElementById('user_info').innerHTML = `<h2>requests limit cross!</h2>`;
             user_section.style.display = "flex";
             loader.style.display = "none";
             return;
