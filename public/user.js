@@ -12,9 +12,9 @@ async function user() {
     try {
         const reponse = await fetch(`/backend/user`);
         const data = await reponse.json();
-        if (!data.user){
+        if (!data.user) {
             return;
-        } else{
+        } else {
             const backend_cache = await check_cache(data.user); //calling the cache data in Backend.
             if (backend_cache) return;
             user_info_(data.user);
@@ -29,10 +29,7 @@ async function user_info_(user) {
     user_section.style.display = "none";
     loader.style.display = "flex";
     try {
-
-      c(user, false);
-        //--------------------------------------------------------------
-        const reponse = await fetch(`/user/of/git/${user}`);
+        const reponse = await fetch(` https://api.github.com/users/${user}`);
         const data = await reponse.json();
         send_backend(user, data);// calling for cache data store in Backend.
         if (data.login === undefined) {
@@ -97,7 +94,6 @@ async function check_cache(user) {
             if (results.obj.user === user) {
                 console.log("_");
                 render_user_info(results.obj.obj_)
-                c(user, true);
                 return true;
             }
         }
@@ -105,13 +101,4 @@ async function check_cache(user) {
         console.error(error)
     }
 
-}
-
-
-async function c(username, val) {
-    const value = await fetch('api/value1', {
-        method: 'POST', 
-        headers: {'Content-Type': "application/json"},
-        body: JSON.stringify({value1: username, cache1: val}),
-    });
 }
