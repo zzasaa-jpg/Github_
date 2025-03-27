@@ -39,7 +39,7 @@ form.addEventListener("submit", async function (e) {
 
 async function requests() {
     try {
-        const reponse = await fetch("/api/requests_limit");
+        const reponse = await fetch("https://api.github.com/rate_limit");
         const data = await reponse.json();
         const resetTimeStamp = data.resources.core.reset * 1000;
         const resetTime = new Date(resetTimeStamp);
