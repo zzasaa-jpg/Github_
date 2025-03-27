@@ -41,10 +41,10 @@ async function requests() {
     try {
         const reponse = await fetch("/api/requests_limit");
         const data = await reponse.json();
-        const resetTimeStamp = data.rate.reset * 1000;
+        const resetTimeStamp = data.resources.core.reset * 1000;
         const resetTime = new Date(resetTimeStamp);
         requests_div.innerHTML = `
-        <h2>Remaining requests:${data.rate.remaining}/60</h2>
+        <h2>Remaining requests:${data.resources.core.remaining}/60</h2>
         <h2>Search requests:${data.resources.search.remaining}/10</h2>
         <h2>Reset Time:${resetTime.toLocaleString()}</h2>
         `;
