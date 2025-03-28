@@ -36,6 +36,7 @@ async function user_info_(user) {
             document.getElementById('user_info').innerHTML = `<h2>requests limit cross!</h2>`;
             user_section.style.display = "flex";
             loader.style.display = "none";
+            user_section.style.height = "auto";
             return;
         } else {
             render_user_info(data);
