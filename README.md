@@ -1,4 +1,4 @@
-# Github serch application
+# Github search application
 
 ## Details of stack, third party, programming language
 - FullStack
